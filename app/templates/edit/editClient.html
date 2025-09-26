@@ -1,0 +1,162 @@
+{% extends "dashboard/index.html" %}
+<!doctype html>
+<html lang="en">
+
+{% load static %}
+
+{% block head %}
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{% static "assets/images/favicon-32x32.png" %}" type="image/png" />
+	<!--plugins-->
+	<link href="{% static "assets/plugins/simplebar/css/simplebar.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/metismenu/css/metisMenu.min.css" %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static "assets/css/pace.min.css" %}" rel="stylesheet" />
+	<script src="{% static "assets/js/pace.min.js" %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet">
+	<link href="{% static "assets/css/bootstrap-extended.css" %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="{% static "assets/css/app.css" %}" rel="stylesheet">
+	<link href="{% static "assets/css/icons.css" %}" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{% static "assets/css/dark-theme.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/semi-dark.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/header-colors.css" %}" />
+
+	<!-- Agregar el estilo de Flatpickr -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+	<title>Create Client</title>
+{% endblock %}
+
+{% block page_content %}
+<!--end breadcrumb-->
+<div class="card">
+	<div class="card-body">
+		<h5 class="mb-1">Add Client</h5>
+		<p class="mb-4">Information about the client</p>
+		<hr/>
+		<div id="editor">
+			<form id="formCreateClient" method="POST">
+			{% csrf_token %}
+				<div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
+					<div class="row g-3">	
+			
+						<!-- First Name -->
+						<div class="col-12 col-lg-4">
+							<label for="first_name" class="form-label">Nombre Completo</label>
+							<input type="text" class="form-control" name="first_name" id="first_name" value="{{ client.full_name }}" placeholder="First Name" required>
+						</div>
+
+						<div class="col-12 col-lg-4">
+							<label for="cod_number" class="form-label">Codigo Number</label>
+							<select name="cod_number" class="form-select"  id="cod_number" required>
+								<option value="" disabled selected>Selecciona un prefijo </option>
+								<option {% if client.cod_number == "+1" %}selected{% endif %} value="+1">+1 (Estados Unidos, Canadá, etc.)</option>
+								<option {% if client.cod_number == "+7" %}selected{% endif %} value="+7">+7 (Rusia, Kazajistán)</option>
+								<option {% if client.cod_number == "+27" %}selected{% endif %} value="+27">+27 (Sudáfrica)</option>
+								<option {% if client.cod_number == "+33" %}selected{% endif %} value="+33">+33 (Francia)</option>
+								<option {% if client.cod_number == "+34" %}selected{% endif %} value="+34">+34 (España)</option>
+								<option {% if client.cod_number == "+39" %}selected{% endif %} value="+39">+39 (Italia)</option>
+								<option {% if client.cod_number == "+44" %}selected{% endif %} value="+44">+44 (Reino Unido)</option>
+								<option {% if client.cod_number == "+49" %}selected{% endif %} value="+49">+49 (Alemania)</option>
+								<option {% if client.cod_number == "+51" %}selected{% endif %} value="+51">+51 (Perú)</option>
+								<option {% if client.cod_number == "+52" %}selected{% endif %} value="+52">+52 (México)</option>
+								<option {% if client.cod_number == "+54" %}selected{% endif %} value="+54">+54 (Argentina)</option>
+								<option {% if client.cod_number == "+55" %}selected{% endif %} value="+55">+55 (Brasil)</option>
+								<option {% if client.cod_number == "+56" %}selected{% endif %} value="+56">+56 (Chile)</option>
+								<option {% if client.cod_number == "+57" %}selected{% endif %} value="+57">+57 (Colombia)</option> 
+								<option {% if client.cod_number == "+61" %}selected{% endif %} value="+61">+61 (Australia)</option>
+								<option {% if client.cod_number == "+81" %}selected{% endif %} value="+81">+81 (Japón)</option>
+								<option {% if client.cod_number == "+82" %}selected{% endif %} value="+82">+82 (Corea del Sur)</option>
+								<option {% if client.cod_number == "+86" %}selected{% endif %} value="+86">+86 (China)</option>
+								<option {% if client.cod_number == "+91" %}selected{% endif %} value="+91">+91 (India)</option>
+								<option {% if client.cod_number == "+971" %}selected{% endif %} value="+971">+971 (Emiratos Árabes Unidos)</option>
+								<option {% if client.cod_number == "+53" %}selected{% endif %} value="+53">+53 (Cuba)</option>
+								<option {% if client.cod_number == "+502" %}selected{% endif %} value="+502">+502 (Guatemala)</option>
+								<option {% if client.cod_number == "+503" %}selected{% endif %} value="+503">+503 (El Salvador)</option>
+								<option {% if client.cod_number == "+504" %}selected{% endif %} value="+504">+504 (Honduras)</option>
+								<option {% if client.cod_number == "+505" %}selected{% endif %} value="+505">+505 (Nicaragua)</option>
+								<option {% if client.cod_number == "+506" %}selected{% endif %} value="+506">+506 (Costa Rica)</option>
+								<option {% if client.cod_number == "+507" %}selected{% endif %} value="+507">+507 (Panamá)</option>
+								<option {% if client.cod_number == "+509" %}selected{% endif %} value="+509">+509 (Haití)</option>
+								<option {% if client.cod_number == "+58" %}selected{% endif %} value="+58">+58 (Venezuela)</option>
+								<option {% if client.cod_number == "+591" %}selected{% endif %} value="+591">+591 (Bolivia)</option>
+								<option {% if client.cod_number == "+593" %}selected{% endif %} value="+593">+593 (Ecuador)</option>
+								<option {% if client.cod_number == "+595" %}selected{% endif %} value="+595">+595 (Paraguay)</option>
+								<option {% if client.cod_number == "+598" %}selected{% endif %} value="+598">+598 (Uruguay)</option>
+							</select>
+						</div>	
+								
+						<!-- Phone Number -->
+						<div class="col-12 col-lg-4">
+							<label for="phone_number" class="form-label">Phone Number</label>
+							<input type="number" class="form-control" name="phone_number" id="phone_number" value="{{ client.phone_number }}" placeholder="Phone Number" required>
+						</div>
+			
+						<!-- E-mail Address -->
+						<div class="col-12 col-lg-4">
+							<label for="email" class="form-label">E-mail Address</label>
+							<input type="email" class="form-control" name="email" id="email" value="{{ client.email }}" placeholder="Enter Email Address" required>
+						</div>
+			
+						<!-- Address -->
+						<div class="col-12 col-lg-4">
+							<label for="address" class="form-label">Address</label>
+							<input type="text" class="form-control" name="address" id="address" value="{{ client.address }}" placeholder="Address" required>
+						</div>
+		
+						<!-- City -->
+						<div class="col-12 col-lg-4">
+							<label for="city" class="form-label">City</label>
+							<input readonly  type="text" class="form-control" name="city" id="city" value="{{ client.city }}" required>
+						</div>
+			
+			
+						<!-- County -->
+						<div class="col-12 col-lg-4">
+							<label for="county" class="form-label">County</label>
+							<input type="text" class="form-control" name="county" id="county" value="{{ client.country }}"  required>
+						</div>
+
+						<div class="col-12 col-lg-12">
+							<label for="description" class="form-label">Descripción</label>
+							<textarea class="form-control" name="description" rows="3" style="resize: none" placeholder="Observation" >{{ client.description }}</textarea>
+						</div>
+
+						<div class="col-12 col-lg-12">
+							<button type="submit" class="btn btn-primary px-4" id="sendClient">Guardar</button>
+							<a href="{% url 'formCreateClients' %}" class="btn btn-light px-4">Regresar</a>
+						</div>
+
+
+						
+					</div><!---end row-->
+				
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block end_js %}
+	<!--end switcher-->
+	<!-- Bootstrap JS -->
+	<script src="{% static "assets/js/bootstrap.bundle.min.js" %}"></script>
+	<!--plugins-->
+	<script src="{% static "assets/js/jquery.min.js" %}"></script>
+	<script src="{% static "assets/plugins/simplebar/js/simplebar.min.js" %}"></script>
+	<script src="{% static "assets/plugins/metismenu/js/metisMenu.min.js" %}"></script>
+	<script src="{% static "assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js" %}"></script>
+	
+	<!--app JS-->
+	<script src="{% static "assets/js/app.js" %}"></script>
+	
+
+{% endblock %}

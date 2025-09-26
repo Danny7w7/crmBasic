@@ -1,0 +1,94 @@
+{% extends "dashboard/index.html" %}
+{% load static %}
+{% block head %}
+    <title>Creation Alert</title>
+	<!--plugins-->
+	<link href="{% static "assets/plugins/simplebar/css/simplebar.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/metismenu/css/metisMenu.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/datatable/css/dataTables.bootstrap5.min.css" %}" rel="stylesheet" />
+	<!-- loader-->
+	<link href="{% static "assets/css/pace.min.css" %}" rel="stylesheet" />
+	<script src="{% static "assets/js/pace.min.js" %}"></script>
+	<!-- Bootstrap CSS -->
+	<link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet">
+	<link href="{% static "assets/css/bootstrap-extended.css" %}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+	<link href="{% static "assets/css/app.css" %}" rel="stylesheet">
+	<link href="{% static "assets/css/icons.css" %}" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{% static "assets/css/dark-theme.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/semi-dark.css" %}" />
+	<link rel="stylesheet" href="{% static "assets/css/header-colors.css" %}" />
+
+	<!-- Tom Select CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+{% endblock %}
+{% block page_content %}
+<h6 class="mb-0 text-uppercase">Creacion de la alerta</h6>
+<hr/>
+<div class="row">
+	<div class="col-xl-10 mx-auto">
+		<div class="card">
+			<div class="card-header px-4 py-3">
+				<h5 class="mb-0">Informacion de la alert</h5>
+			</div>
+			<div class="card-body p-4">
+				<form class="row g-3 needs-validation" method="POST" >
+					<div class="col-md-4">
+						<label for="name_client" class="form-label">Nombre completo del Cliente</label>
+						<select class="form-control" id="client-nombre" name="nameR" style="width: 100%;" required></select>
+					</div>
+					<div class="col-md-4">
+						<label for="phone_number" class="form-label">Telefono</label>
+						<input hidden type="text" class="form-control"  name="idClient" id="client-id" required>
+						<input readonly type="text" class="form-control" name="phoneR" id="client-telefono" required>
+					</div>
+					<div class="col-md-4">
+						<label for="phone_number" class="form-label">Dirrecion</label>
+						<input readonly type="text" class="form-control" name="addressR" id="client-direccion" required>
+					</div>
+					<div class="col-md-6">
+						<label for="datetime" class="form-label">Fecha de cita</label>
+						<input type="date" class="form-control" id="datetime" name="datetime" required>
+					</div>
+					<div class="col-md-6">
+						<label for="time" class="form-label">Hora de Cita</label>
+						<input type="time" class="form-control" id="time" name="time" required>
+					</div>
+					<div class="col-md-12">
+						<label for="content" class="form-label">Obs</label>
+						<textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+					</div>
+					<div class="col-md-12">
+						<div class="d-md-flex d-grid align-items-center gap-3">
+							<button type="submit" class="btn btn-primary px-4">Guardad</button>
+						</div>
+					</div>
+					{% csrf_token %}
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block end_js %}
+	<!-- Bootstrap JS -->
+	<script src="{% static "assets/js/bootstrap.bundle.min.js" %}"></script>
+	<!--plugins-->
+	<script src="{% static "assets/js/jquery.min.js" %}"></script>
+	<script src="{% static "assets/plugins/simplebar/js/simplebar.min.js" %}"></script>
+	<script src="{% static "assets/plugins/metismenu/js/metisMenu.min.js" %}"></script>
+	<script src="{% static "assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js" %}"></script>
+	<script src="{% static "assets/plugins/datatable/js/jquery.dataTables.min.js" %}"></script>
+	<script src="{% static "assets/plugins/datatable/js/dataTables.bootstrap5.min.js" %}"></script>
+
+	<!-- Tom Select JS -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+
+	<!--app JS-->
+	<script src="{% static "assets/js/app.js" %}"></script>
+	
+    <script src="{% static "assets/js/validations/addClients.js" %}"></script>
+
+{% endblock %}
