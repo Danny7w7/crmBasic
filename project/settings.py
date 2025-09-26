@@ -27,13 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY_DJANGO')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#CSRF_TRUSTED_ORIGINS = ['https://crm.lapeira.com', 'https://www.crm.lapeira.com']
-#ALLOWED_HOSTS = ['crm.lapeira.com', 'www.crm.lapeira.com']
-CSRF_TRUSTED_ORIGINS = ['https://c4d9-179-33-189-146.ngrok-free.app']
-
-ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://crmbasic.lapeira.com', 'https://www.crmbasic.lapeira.com']
+ALLOWED_HOSTS = ['crmbasic.lapeira.com', 'www.crmbasic.lapeira.com']
 
 #Configuration to use own user model
 AUTH_USER_MODEL = 'app.Users'  
